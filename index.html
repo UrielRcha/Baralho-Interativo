@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Projetos Interativos com Cartas</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="site" id="siteRoot">
+    <header class="topbar container">
+      <div class="brand">
+        <h1>DeckLab</h1>
+        <p class="subtitle">Projetos interativos — Baralho · Valores · Mini Loja</p>
+      </div>
+
+      <nav class="topnav" aria-label="Navegação principal">
+        <a href="#proj1" class="nav-link">Baralho</a>
+        <a href="#proj2" class="nav-link">Valor da Carta</a>
+        <a href="#proj3" class="nav-link">Mini Loja</a>
+      </nav>
+    </header>
+
+    <main class="main">
+      <section id="proj1" class="panel section-panel container">
+        <div class="panel-inner">
+          <div class="panel-info">
+            <h2>Projeto 1 — Baralho Interativo 🃏</h2>
+            <p class="lead">
+              Escolha uma carta aleatória do baralho. A carta é selecionada e guardada (não mostrada imediatamente).
+              Você pode revelar a carta quando quiser.
+            </p>
+
+            <div class="controls">
+              <button id="btnDraw" class="btn primary">Escolher carta aleatória</button>
+              <button id="btnReveal" class="btn" disabled>Revelar carta</button>
+              <button id="btnReset" class="btn ghost">Resetar seleção</button>
+            </div>
+
+            <div class="status" id="drawStatus">Nenhuma carta selecionada.</div>
+          </div>
+
+          <div class="panel-visual">
+            <div id="cardVisual" class="card-visual card-back" aria-hidden="true">
+              Verso do baralho
+            </div>
+            <small class="muted">Preview da carta (aparece ao revelar)</small>
+          </div>
+        </div>
+      </section>
+
+      <section id="proj2" class="panel section-panel container">
+        <div class="panel-inner column">
+          <div class="panel-info">
+            <h2>Projeto 2 — Sistema de Valor de Cartas 💰</h2>
+            <p class="lead">
+              Valores base e multiplicadores por naipe. Ao revelar uma carta, o valor total é calculado automaticamente.
+            </p>
+            <div class="value-box">
+              <p><strong>Carta selecionada:</strong> <span id="selectedCardText">—</span></p>
+              <p><strong>Valor base (rank):</strong> <span id="baseValue">—</span></p>
+              <p><strong>Multiplicador (naipe):</strong> <span id="suitMultiplier">—</span></p>
+              <p class="big"><strong>Valor total:</strong> <span id="totalValue">—</span></p>
+            </div>
+          </div>
+          <div class="panel-visual mini">
+            <h3>Regras rápidas</h3>
+            <ul class="rules">
+              <li>Ás = 1; Números = próprio valor; Valete = 11; Rainha = 12; Rei = 13</li>
+              <li>Paus ×1 · Ouros ×2 · Espadas ×3 · Copas ×4</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="proj3" class="panel section-panel container">
+        <div class="panel-inner">
+          <div class="panel-info">
+            <h2>Projeto 3 — Mini Loja 🛍️</h2>
+            <p class="lead">
+              Use o valor da carta para comprar itens fictícios. Se tiver saldo suficiente, a compra é concluída.
+            </p>
+
+            <div class="shop">
+              <div class="balance">
+                <p>Saldo (valor da carta): <strong id="shopBalance">0</strong></p>
+                <button id="btnRestore" class="btn small" disabled>Restaurar saldo</button>
+              </div>
+
+              <div class="items-grid" id="itemsGrid">
+                <div class="shop-item" data-price="3">
+                  <h4>Poção</h4>
+                  <p>Preço: <strong>3</strong></p>
+                  <button class="btn buy">Comprar</button>
+                </div>
+                <div class="shop-item" data-price="7">
+                  <h4>Adaga</h4>
+                  <p>Preço: <strong>7</strong></p>
+                  <button class="btn buy">Comprar</button>
+                </div>
+                <div class="shop-item" data-price="12">
+                  <h4>Espada Curta</h4>
+                  <p>Preço: <strong>12</strong></p>
+                  <button class="btn buy">Comprar</button>
+                </div>
+                <div class="shop-item" data-price="18">
+                  <h4>Armadura</h4>
+                  <p>Preço: <strong>18</strong></p>
+                  <button class="btn buy">Comprar</button>
+                </div>
+                <div class="shop-item" data-price="25">
+                  <h4>Espada Longa</h4>
+                  <p>Preço: <strong>25</strong></p>
+                  <button class="btn buy">Comprar</button>
+                </div>
+              </div>
+
+              <div id="shopMsg" class="shop-msg muted">Revele uma carta para ativar a loja.</div>
+            </div>
+          </div>
+
+          <div class="panel-visual">
+            <div class="shop-receipt" id="shopReceipt">
+              <h4>Compras realizadas</h4>
+              <ul id="purchasedList"></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer container">
+      <p>© <span id="year"></span> DeckLab — Projeto demonstrativo</p>
+      <p class="muted">HTML · CSS · JavaScript — Responsivo</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
